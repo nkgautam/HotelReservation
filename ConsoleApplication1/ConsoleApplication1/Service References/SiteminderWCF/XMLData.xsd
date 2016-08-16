@@ -1,0 +1,209 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://www.opentravel.org/OTA/2003/05" elementFormDefault="qualified" targetNamespace="http://www.opentravel.org/OTA/2003/05" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="About">
+    <xs:complexType />
+  </xs:element>
+  <xs:element name="AboutResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" maxOccurs="1" name="AboutResult" type="tns:SiteMinderVersionResponse" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:complexType name="SiteMinderVersionResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="1" name="ServiceResponse" type="tns:serviceInfo" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="serviceInfo">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="1" name="ServiceName" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="Version" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="OTA_HotelAvailRQ" type="tns:OTA_HotelAvailRQ" />
+  <xs:complexType name="OTA_HotelAvailRQ">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="1" name="AvailRequestSegments" type="tns:AvailRequestSegments" />
+    </xs:sequence>
+    <xs:attribute name="Version" type="xs:string" />
+    <xs:attribute name="EchoToken" type="xs:string" />
+    <xs:attribute name="TimeStamp" type="xs:string" />
+    <xs:attribute name="AvailRatesOnly" type="xs:boolean" use="required" />
+  </xs:complexType>
+  <xs:complexType name="AvailRequestSegments">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="1" name="AvailRequestSegment" type="tns:AvailRequestSegment" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="AvailRequestSegment">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="1" name="HotelSearchCriteria" type="tns:HotelSearchCriteria" />
+    </xs:sequence>
+    <xs:attribute name="AvailReqType" type="xs:string" />
+  </xs:complexType>
+  <xs:complexType name="HotelSearchCriteria">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="1" name="Criterion" type="tns:Criterion" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="Criterion">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="1" name="HotelRef" type="tns:HotelRef" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="HotelRef">
+    <xs:attribute name="HotelCode" type="xs:string" />
+  </xs:complexType>
+  <xs:element name="OTA_HotelAvailRS" type="tns:OTA_HotelAvailRS" />
+  <xs:complexType name="OTA_HotelAvailRS">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="1" name="Success" type="tns:Success" />
+      <xs:element minOccurs="0" maxOccurs="1" name="RoomStays" type="tns:ArrayOfRoomStay" />
+    </xs:sequence>
+    <xs:attribute name="Version" type="xs:string" />
+    <xs:attribute name="EchoToken" type="xs:string" />
+    <xs:attribute name="TimeStamp" type="xs:string" />
+  </xs:complexType>
+  <xs:complexType name="Success">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="1" name="status" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ArrayOfRoomStay">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="RoomStay" nillable="true" type="tns:RoomStay" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="RoomStay">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="1" name="RoomTypes" type="tns:ArrayOfRoomType" />
+      <xs:element minOccurs="0" maxOccurs="1" name="RatePlans" type="tns:ArrayOfRatePlan" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ArrayOfRoomType">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="RoomType" nillable="true" type="tns:RoomType" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="RoomType">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="1" name="RoomDescription" type="tns:RoomDescription" />
+    </xs:sequence>
+    <xs:attribute name="RoomTypeCode" type="xs:string" />
+  </xs:complexType>
+  <xs:complexType name="RoomDescription">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="1" name="Text" type="xs:string" />
+    </xs:sequence>
+    <xs:attribute name="Name" type="xs:string" />
+  </xs:complexType>
+  <xs:complexType name="ArrayOfRatePlan">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="RatePlan" nillable="true" type="tns:RatePlan" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="RatePlan">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="1" name="RatePlanDescription" type="tns:RatePlanDescription" />
+    </xs:sequence>
+    <xs:attribute name="RatePlanCode" type="xs:string" />
+  </xs:complexType>
+  <xs:complexType name="RatePlanDescription">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="1" name="Text" type="xs:string" />
+    </xs:sequence>
+    <xs:attribute name="Name" type="xs:string" />
+  </xs:complexType>
+  <xs:element name="OTA_HotelAvailNotifRQ" type="tns:OTA_HotelAvailNotifRQ" />
+  <xs:complexType name="OTA_HotelAvailNotifRQ">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="1" name="AvailStatusMessages" type="tns:AvailStatusMessages" />
+    </xs:sequence>
+    <xs:attribute name="Version" type="xs:string" />
+    <xs:attribute name="TimeStamp" type="xs:string" />
+    <xs:attribute name="EchoToken" type="xs:string" />
+  </xs:complexType>
+  <xs:complexType name="AvailStatusMessages">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="1" name="AvailStatusMessage" type="tns:AvailStatusMessage" />
+    </xs:sequence>
+    <xs:attribute name="HotelCode" type="xs:string" />
+  </xs:complexType>
+  <xs:complexType name="AvailStatusMessage">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="1" name="StatusApplicationControl" type="tns:StatusApplicationControl" />
+    </xs:sequence>
+    <xs:attribute name="BookingLimit" type="xs:string" />
+  </xs:complexType>
+  <xs:complexType name="StatusApplicationControl">
+    <xs:attribute name="Start" type="xs:string" />
+    <xs:attribute name="End" type="xs:string" />
+    <xs:attribute name="InvTypeCode" type="xs:string" />
+    <xs:attribute name="RatePlanCode" type="xs:string" />
+  </xs:complexType>
+  <xs:element name="OTA_HotelAvailNotifRS" type="tns:OTA_HotelAvailNotifRS" />
+  <xs:complexType name="OTA_HotelAvailNotifRS">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="1" name="Success" type="tns:Success" />
+    </xs:sequence>
+    <xs:attribute name="Version" type="xs:string" />
+    <xs:attribute name="EchoToken" type="xs:string" />
+    <xs:attribute name="TimeStamp" type="xs:string" />
+  </xs:complexType>
+  <xs:element name="OTA_HotelRateAmountNotifRQ" type="tns:OTA_HotelRateAmountNotifRQ" />
+  <xs:complexType name="OTA_HotelRateAmountNotifRQ">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="1" name="RateAmountMessages" type="tns:RateAmountMessages" />
+    </xs:sequence>
+    <xs:attribute name="Version" type="xs:string" />
+    <xs:attribute name="TimeStamp" type="xs:string" />
+    <xs:attribute name="EchoToken" type="xs:string" />
+  </xs:complexType>
+  <xs:complexType name="RateAmountMessages">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="1" name="RateAmountMessage" type="tns:RateAmountMessage" />
+    </xs:sequence>
+    <xs:attribute name="HotelCode" type="xs:string" />
+  </xs:complexType>
+  <xs:complexType name="RateAmountMessage">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="1" name="StatusApplicationControl" type="tns:StatusApplicationControl" />
+      <xs:element minOccurs="0" maxOccurs="1" name="Rates" type="tns:Rates" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="Rates">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="1" name="Rate" type="tns:Rate" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="Rate">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="1" name="BaseByGuestAmts" type="tns:BaseByGuestAmts" />
+      <xs:element minOccurs="0" maxOccurs="1" name="RateDescription" type="tns:RateDescription" />
+    </xs:sequence>
+    <xs:attribute name="AgeQualifyingCode" type="xs:string" />
+    <xs:attribute name="AmountAfterTax" type="xs:string" />
+  </xs:complexType>
+  <xs:complexType name="BaseByGuestAmts">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="1" name="BaseByGuestAmt" type="tns:BaseByGuestAmt" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="BaseByGuestAmt">
+    <xs:attribute name="AgeQualifyingCode" type="xs:string" />
+    <xs:attribute name="AmountAfterTax" type="xs:string" />
+  </xs:complexType>
+  <xs:complexType name="RateDescription">
+    <xs:attribute name="Text" type="xs:string" />
+  </xs:complexType>
+  <xs:element name="OTA_HotelRateAmountNotifRS" type="tns:OTA_HotelRateAmountNotifRS" />
+  <xs:complexType name="OTA_HotelRateAmountNotifRS">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="1" name="Success" type="tns:Success" />
+    </xs:sequence>
+    <xs:attribute name="Version" type="xs:string" />
+    <xs:attribute name="EchoToken" type="xs:string" />
+    <xs:attribute name="TimeStamp" type="xs:string" />
+  </xs:complexType>
+</xs:schema>

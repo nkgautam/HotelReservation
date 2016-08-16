@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<OTA_HotelAvailRS xmlns="http://www.opentravel.org/OTA/2003/05" Version="1.0">
+  <Success/>
+  <RoomStays>
+    <RoomStay>
+      <RoomTypes>
+        <RoomType RoomTypeCode="SGL">
+          <RoomDescription Name="Single Room"/>
+        </RoomType>
+      </RoomTypes>
+    </RoomStay>
+    <RoomStay>
+      <RoomTypes>
+        <RoomType RoomTypeCode="DBX">
+          <RoomDescription Name="Deluxe Double Room"/>
+        </RoomType>
+      </RoomTypes>
+    </RoomStay>
+    <RoomStay>
+      <RoomTypes>
+        <RoomType RoomTypeCode="DBL">
+          <RoomDescription Name="Standard Double Room"/>
+        </RoomType>
+      </RoomTypes>
+    </RoomStay>
+  </RoomStays>
+</OTA_HotelAvailRS>

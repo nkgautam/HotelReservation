@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="http://www.opentravel.org/OTA/2003/05" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.opentravel.org/OTA/2003/05" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://www.opentravel.org/OTA/2003/05/Imports">
+      <xsd:import schemaLocation="http://localhost:4769/XMLData.svc?xsd=xsd0" namespace="http://www.opentravel.org/OTA/2003/05" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="IXMLData_About_InputMessage">
+    <wsdl:part name="parameters" element="tns:About" />
+  </wsdl:message>
+  <wsdl:message name="IXMLData_About_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AboutResponse" />
+  </wsdl:message>
+  <wsdl:message name="OTARequest">
+    <wsdl:part name="OTA_HotelAvailRQ" element="tns:OTA_HotelAvailRQ" />
+  </wsdl:message>
+  <wsdl:message name="OTAResponse">
+    <wsdl:part name="OTA_HotelAvailRS" element="tns:OTA_HotelAvailRS" />
+  </wsdl:message>
+  <wsdl:message name="OTAHotelAvailPush">
+    <wsdl:part name="OTA_HotelAvailNotifRQ" element="tns:OTA_HotelAvailNotifRQ" />
+  </wsdl:message>
+  <wsdl:message name="OTAHotelAvailNotifRS">
+    <wsdl:part name="OTA_HotelAvailNotifRS" element="tns:OTA_HotelAvailNotifRS" />
+  </wsdl:message>
+  <wsdl:message name="OTAHotelRateAmountPush">
+    <wsdl:part name="OTA_HotelRateAmountNotifRQ" element="tns:OTA_HotelRateAmountNotifRQ" />
+  </wsdl:message>
+  <wsdl:message name="OTAHotelRateAmountNotifRS">
+    <wsdl:part name="OTA_HotelRateAmountNotifRS" element="tns:OTA_HotelRateAmountNotifRS" />
+  </wsdl:message>
+  <wsdl:portType name="IXMLData">
+    <wsdl:operation name="About">
+      <wsdl:input wsaw:Action="http://www.opentravel.org/OTA/2003/05/IXMLData/About" message="tns:IXMLData_About_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.opentravel.org/OTA/2003/05/IXMLData/AboutResponse" message="tns:IXMLData_About_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="HotelAvailRQ">
+      <wsdl:input wsaw:Action="http://www.siteminder.com.au/siteconnect/HotelAvailRQ" name="OTARequest" message="tns:OTARequest" />
+      <wsdl:output wsaw:Action="http://www.opentravel.org/OTA/2003/05/IXMLData/HotelAvailRQResponse" name="OTAResponse" message="tns:OTAResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="HotelAvailNotifRQ">
+      <wsdl:input wsaw:Action="http://www.siteminder.com.au/siteconnect/HotelAvailNotifRQ" name="OTAHotelAvailPush" message="tns:OTAHotelAvailPush" />
+      <wsdl:output wsaw:Action="http://www.siteminder.com.au/siteconnect/HotelAvailNotifRS" name="OTAHotelAvailNotifRS" message="tns:OTAHotelAvailNotifRS" />
+    </wsdl:operation>
+    <wsdl:operation name="HotelRateAmountNotifRQ">
+      <wsdl:input wsaw:Action="http://www.siteminder.com.au/siteconnect/HotelRateAmountNotifRQ" name="OTAHotelRateAmountPush" message="tns:OTAHotelRateAmountPush" />
+      <wsdl:output wsaw:Action="http://www.siteminder.com.au/siteconnect/HotelRateAmountNotifRS" name="OTAHotelRateAmountNotifRS" message="tns:OTAHotelRateAmountNotifRS" />
+    </wsdl:operation>
+  </wsdl:portType>
+</wsdl:definitions>
